@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Background: Dark Square -->
+    <path
+        android:fillColor="#121212"
+        android:pathData="M0,0h108v108h-108z"/>
+    
+    <!-- Stylized 'R' Glyph in Accent Color -->
+    <path
+        android:fillColor="#BB86FC"
+        android:pathData="M34,24 L34,84 L46,84 L46,60 L56.1,60 L69.5,84 L84.2,84 L65.3,55.5 C72.8,51.8 77,45 77,36 C77,22 66,24 54,24 L34,24 Z M46,36 L54,36 C59.5,36 63,38 63,42 C63,46 59.5,48 54,48 L46,48 L46,36 Z"/>
+        
+    <!-- Subtle Retro Scanline Overlay -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.05"
+        android:pathData="M0,20h108v2h-108z M0,40h108v2h-108z M0,60h108v2h-108z M0,80h108v2h-108z"/>
+</vector>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Covers all of external storage (internal + SD card) -->
+    <external-path name="external" path="." />
+    <!-- Root path catches SD cards and other mount points -->
+    <root-path name="root" path="." />
+    <!-- Cache dir for ROM copy so we can pass content URI to RetroArch with read permission -->
+    <cache-path name="rom_launch" path="rom_launch/" />
+</paths>

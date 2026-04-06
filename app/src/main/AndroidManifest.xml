@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- All Files Access — required on Android 11+ so emulators can read ROM files -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <!-- Package visibility: declare ALL known emulator packages for Android 11+ -->
+    <queries>
+        <!-- RetroArch -->
+        <package android:name="com.retroarch" />
+        <package android:name="com.retroarch.aarch64" />
+
+        <!-- NES -->
+        <package android:name="com.explusalpha.NesEmu" />
+        <package android:name="com.nostalgiaemulators.nesfull" />
+        <package android:name="com.nostalgiaemulators.neslite" />
+
+        <!-- SNES -->
+        <package android:name="com.explusalpha.Snes9xPlus" />
+        <package android:name="com.neutronemulation.super_retro_16" />
+
+        <!-- N64 -->
+        <package android:name="org.mupen64plusae.v3.fzurita" />
+
+        <!-- Game Boy / GBC -->
+        <package android:name="com.explusalpha.GbcEmu" />
+        <package android:name="com.fastemulator.gbc" />
+
+        <!-- GBA -->
+        <package android:name="com.explusalpha.GbaEmu" />
+        <package android:name="com.fastemulator.gba" />
+        <package android:name="com.fastemulator.gbafree" />
+        <package android:name="it.dbtecno.pizzaboygbapro" />
+        <package android:name="it.dbtecno.pizzaboypro" />
+        <package android:name="it.dbtecno.pizzaboy" />
+
+        <!-- Multi-system (Lemuroid) -->
+        <package android:name="com.swordfish.lemuroid" />
+
+        <!-- NDS -->
+        <package android:name="com.dsemu.drastic" />
+        <package android:name="me.magnum.melonds" />
+
+        <!-- Genesis / 32X -->
+        <package android:name="com.explusalpha.MdEmu" />
+
+        <!-- Sega Saturn -->
+        <package android:name="org.devmiyax.yabasern.pro" />
+        <package android:name="org.devmiyax.yabasern" />
+
+        <!-- Dreamcast -->
+        <package android:name="io.recompiled.redream" />
+        <package android:name="com.flycast.emulator" />
+        <package android:name="com.reicast.emulator" />
+
+        <!-- PlayStation (PSX) -->
+        <package android:name="com.duckstation.shared" />
+        <package android:name="com.epsxe.ePSXe" />
+        <package android:name="com.emulator.fpse" />
+        <package android:name="com.emulator.fpse64" />
+
+        <!-- PlayStation 2 -->
+        <package android:name="xyz.aethersx2.android" />
+        <package android:name="net.pcsx2.android" />
+
+        <!-- PSP -->
+        <package android:name="org.ppsspp.ppsspp" />
+        <package android:name="org.ppsspp.ppssppgold" />
+        <package android:name="org.ppsspp.ppsspplegacy" />
+
+        <!-- Neo Geo -->
+        <package android:name="com.explusalpha.NeoEmu" />
+
+        <!-- Arcade -->
+        <package android:name="com.seleuco.mame4d2024" />
+
+        <!-- GameCube / Wii (Dolphin) -->
+        <package android:name="org.dolphinemu.dolphinemu" />
+        <package android:name="org.dolphinemu.mmjr" />
+
+        <!-- Allow ACTION_VIEW resolution for launching emulators -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="application/*" />
+        </intent>
+
+        <!-- Play Store -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="market" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" android:host="play.google.com" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".GlyphApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:extractNativeLibs="true"
+        android:theme="@style/Theme.Glyph"
+        android:requestLegacyExternalStorage="true">
+
+        <!-- FileProvider for sharing ROM files with emulators -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.Glyph">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

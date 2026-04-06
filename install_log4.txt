@@ -1,0 +1,70 @@
+﻿Reusing configuration cache.
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugResValues
+> Task :app:writeDebugAppMetadata
+> Task :app:desugarDebugFileDependencies
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:generateDebugResources
+> Task :app:processDebugNavigationResources
+> Task :app:extractDeepLinksDebug
+> Task :app:generateDebugBuildConfig
+> Task :app:mapDebugSourceSetPaths
+> Task :app:validateSigningDebug
+> Task :app:javaPreCompileDebug
+> Task :app:compileDebugNavigationResources
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:checkDebugAarMetadata
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeDebugShaders
+> Task :app:mergeDebugJniLibFolders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:mergeLibDexDebug
+> Task :app:compressDebugAssets
+> Task :app:mergeDebugNativeLibs
+> Task :app:packageDebugResources
+> Task :app:stripDebugDebugSymbols
+
+> Task :app:processDebugMainManifest
+C:\Users\kinda\RetroS\app\src\main\AndroidManifest.xml:110:9-41 Warning:
+	android:extractNativeLibs should not be specified in this source AndroidManifest.xml file. See https://d.android.com/guide/topics/manifest/application-element#extractNativeLibs for more information.
+The AGP Upgrade Assistant can remove the attribute from the AndroidManifest.xml file and update the build file accordingly. See https://d.android.com/studio/build/agp-upgrade-assistant for more information.
+
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:parseDebugLocalResources
+> Task :app:mergeDebugResources
+> Task :app:processDebugResources
+> Task :app:mergeExtDexDebug
+> Task :app:kspDebugKotlin
+
+> Task :app:compileDebugKotlin
+w: file:///C:/Users/kinda/RetroS/app/src/main/java/com/glyph/launcher/ui/GlyphApp.kt:78:38 '@Deprecated(...) fun onBackPressed(): Unit' is deprecated. Deprecated in Java.
+w: file:///C:/Users/kinda/RetroS/app/src/main/java/com/glyph/launcher/ui/theme/Theme.kt:34:20 'var statusBarColor: Int' is deprecated. Deprecated in Java.
+w: file:///C:/Users/kinda/RetroS/app/src/main/java/com/glyph/launcher/ui/theme/Theme.kt:35:20 'var navigationBarColor: Int' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:hiltAggregateDepsDebug
+> Task :app:hiltJavaCompileDebug
+> Task :app:processDebugJavaRes
+> Task :app:transformDebugClassesWithAsm
+> Task :app:mergeDebugJavaResource
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:mergeProjectDexDebug
+
+> Task :app:packageDebug
+PackagingOptions.jniLibs.useLegacyPackaging should be set to true because android:extractNativeLibs is set to "true" in AndroidManifest.xml.
+
+> Task :app:createDebugApkListingFileRedirect
+
+> Task :app:installDebug
+Installing APK 'app-debug.apk' on 'SM-S918N - 16' for :app:debug
+Installed on 1 device.
+
+BUILD SUCCESSFUL in 31s
+44 actionable tasks: 44 executed
+Configuration cache entry reused.
