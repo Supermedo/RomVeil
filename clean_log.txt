@@ -1,6 +1,0 @@
-﻿Calculating task graph as no cached configuration is available for tasks: clean
-> Task :app:clean
-
-BUILD SUCCESSFUL in 2s
-1 actionable task: 1 executed
-Configuration cache entry stored.
