@@ -1,98 +1,79 @@
-# GLYPH
+<h1 align="center">
+  <img src="app/src/main/res/drawable-nodpi/ic_romveil_logo.png" alt="RomVeil Logo" width="120">
+  <br>
+  RomVeil
+</h1>
 
-A high-fidelity, typography-centric Android frontend for retro gaming.
+<p align="center">
+  <b>A typography-centric retro game launcher designed for simplicity and style on Android.</b>
+</p>
 
-Glyph is designed exclusively for horizontal orientation and controller navigation, prioritizing aesthetic minimalism. It does not emulate games — it discovers your ROM collection, scrapes metadata and artwork, then launches games in your preferred emulator apps via Android Intents.
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-Android-3DDC84.svg?style=flat-square&logo=android" alt="Platform">
+  <img src="https://img.shields.io/badge/Language-Kotlin-7F52FF.svg?style=flat-square&logo=kotlin" alt="Language">
+  <img src="https://img.shields.io/badge/UI-Jetpack_Compose-4285F4.svg?style=flat-square&logo=jetpackcompose" alt="Jetpack Compose">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License">
+</p>
 
-## Architecture
+---
 
-```
-com.glyph.launcher/
-├── data/
-│   ├── local/          # Room database, entities, DAOs
-│   ├── remote/         # ScreenScraper.fr API (Retrofit)
-│   ├── repository/     # Single source of truth
-│   └── scanner/        # SAF-based ROM file discovery
-├── di/                 # Hilt dependency injection modules
-├── domain/model/       # Platform definitions, emulator info
-├── ui/
-│   ├── theme/          # Colors, typography (Inter font), Material3 theme
-│   ├── main/           # Main screen: blurred background + center-snap list
-│   ├── setup/          # First-run setup flow (folder picker, scan, scrape)
-│   └── dialog/         # Emulator picker dialog
-└── util/               # Hash computation, controller input, emulator launching, preferences
-```
+## 🌟 Overview
 
-**Tech Stack:** Kotlin · Jetpack Compose · Room · Hilt · Retrofit · Coil · DataStore
+**RomVeil** is a premium, beautifully crafted front-end launcher for retro game emulation on Android. Rather than bombarding the user with complex toggles or clunky grid menus, RomVeil focuses on **typography, glassmorphism, and seamless immersion**. 
 
-## Requirements
+It handles the heavy lifting of metadata scraping, cover art downloading, and emulator mapping so you can focus on what matters: **playing your games.**
 
-- **Android Studio** Iguana (2024.1) or later
-- **JDK 17**
-- **Min SDK 26** (Android 8.0 Oreo)
-- **Target SDK 34** (Android 14)
+### ✨ Key Features
 
-## Setup
+- **Premium UI/UX:** Built entirely with Jetpack Compose featuring adaptive layouts for both phones and tablets, sleek dark mode aesthetics, and glassmorphic overlays.
+- **Auto-Scraping Engine:** Seamlessly pulls metadata, release years, and high-quality box art using LibRetro, ScreenScraper.fr, TheGamesDB, RAWG, and MobyGames.
+- **Intelligent Platform Detection:** Uses Android's Storage Access Framework (SAF) to scan directories and automatically assign ROM extensions to the correct console.
+- **Controller Navigation:** Full gamepad support (D-Pad, Bumpers, Face buttons) for a console-like experience on Android handhelds.
+- **Extensive Emulator Support:** Works out-of-the-box with over 50 standalone emulators and RetroArch cores.
+    - Includes mapping for modern systems like **Nintendo Switch** (Eden, Yuzu, Uzuy, Suyu, Skyline) and **Nintendo 3DS** (Citra, Lime3DS, Panda3DS).
 
-1. **Clone** the repository and open in Android Studio.
-2. **Sync Gradle** — all dependencies are declared in `gradle/libs.versions.toml`.
-3. **ScreenScraper API credentials** (optional, for metadata scraping):
-   - Register at [screenscraper.fr](https://www.screenscraper.fr/)
-   - Add your dev credentials in `app/build.gradle.kts`:
-     ```kotlin
-     buildConfigField("String", "SCREENSCRAPER_DEV_ID", "\"your_dev_id\"")
-     buildConfigField("String", "SCREENSCRAPER_DEV_PASSWORD", "\"your_dev_password\"")
-     ```
-4. **Build and run** on a physical device or emulator.
+## 🛠️ Built With
 
-## How It Works
+- **[Kotlin](https://kotlinlang.org/)** - Primary language
+- **[Jetpack Compose](https://developer.android.com/jetpack/compose)** - Declarative UI toolkit
+- **[Room](https://developer.android.com/training/data-storage/room)** - Local SQLite database for library caching
+- **[Dagger Hilt](https://dagger.dev/hilt/)** - Dependency injection
+- **[Retrofit](https://square.github.io/retrofit/) & [OkHttp](https://square.github.io/okhttp/)** - Network requests for metadata APIs
+- **[Coil](https://coil-kt.github.io/coil/)** - Image loading and caching
 
-### First Launch (Setup Flow)
-1. User selects a root ROM folder via Android's Storage Access Framework.
-2. The app recursively scans for ROM files, mapping extensions to platforms:
-   - `.sfc`, `.smc` → SNES
-   - `.nes` → NES
-   - `.gba` → GBA
-   - `.gb` → Game Boy
-   - `.gbc` → Game Boy Color
-   - `.n64`, `.z64`, `.v64` → N64
-   - `.nds` → Nintendo DS
-   - `.gen`, `.md`, `.smd` → Genesis
-   - `.iso`, `.chd`, `.cue`, `.pbp` → PlayStation
-   - `.iso`, `.cso` → PSP
-   - `.zip` → Arcade
-3. Optionally scrapes metadata from ScreenScraper.fr (hash-based lookup, then filename fallback).
-4. Downloads fanart/screenshot backgrounds to local storage.
+## 🚀 Getting Started
 
-### Main Interface
-- **Layer 1 (Background):** Full-screen, heavily blurred (32dp) game artwork with 40% black overlay. Cross-fades when scrolling (~300ms).
-- **Layer 2 (Typography):** Center-snapping vertical list with three visual tiers:
-  - **Selected** (center): 42sp bold, full opacity
-  - **Near** (±1): 28sp semi-bold, 60% opacity
-  - **Far** (±2+): 20sp regular, 25% opacity
+### Prerequisites
+- Android Studio Ladybug (or newer)
+- Android SDK 35
+- Java 17
 
-### Controls
-| Input | Action |
-|-------|--------|
-| D-Pad Up/Down | Navigate list |
-| A / Enter | Launch game |
-| B / Back | Back |
-| L1 / R1 | Cycle platform filter |
-| Start | Open settings/setup |
-| Touch swipe | Scroll list |
-| Tap center | Launch game |
+### Building from Source
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Supermedo/RomVeil.git
+   ```
+2. Open the project in Android Studio.
+3. Sync the Gradle files.
+4. Build and Run! 
 
-### Emulator Launching
-When pressing A on a game, Glyph sends an `ACTION_VIEW` intent to the selected emulator with the ROM's content URI. If multiple emulators are installed for a platform, a picker dialog appears with an "always use this" option.
+> **Note on Scraper Credentials:** The ScreenScraper developer credentials have been securely extracted to `local.properties`. If you intend to compile the app and utilize the fast ScreenScraper engine, you will need to add your own developer credentials to the `local.properties` file:
+> ```properties
+> screenscraper.dev.id="your_dev_id"
+> screenscraper.dev.password="your_dev_password"
+> ```
+> Users can still input their own *User* credentials directly within the app settings to bypass quotas!
 
-**Supported emulators include:**
-- RetroArch (universal)
-- Snes9x EX+, NES.emu, GBA.emu, GBC.emu, MD.emu (Robert Broglia's .emu series)
-- DuckStation (PlayStation)
-- PPSSPP (PSP)
-- DraStic (Nintendo DS)
-- Mupen64Plus FZ (N64)
+## 🎮 Supported Systems
+RomVeil natively routes ROMs to the correct emulator intents for:
+- Nintendo (NES, SNES, N64, GameCube, Wii, Switch)
+- Game Boy (GB, GBC, GBA, NDS, 3DS)
+- PlayStation (PS1, PS2, PSP)
+- Sega (Genesis, 32X, Saturn, Dreamcast)
+- Arcade & Neo Geo
 
-## License
+## ⚖️ Disclaimer
+RomVeil is strictly a frontend launcher. It **does not** include any ROMs, BIOS files, copyrighted materials, or emulator binaries. Users are responsible for supplying their own legally obtained game dumps and downloading emulators from the Google Play Store or corresponding open-source repositories.
 
-This project is provided as-is for personal use.
+## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
