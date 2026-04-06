@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="app/src/main/res/drawable-nodpi/ic_romveil_logo.png" alt="RomVeil Logo" width="120">
+  <img src="app/src/main/res/drawable/ic_romveil_logo.png" alt="RomVeil Logo" width="120">
   <br>
   RomVeil
 </h1>
